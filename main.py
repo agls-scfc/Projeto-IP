@@ -3,7 +3,7 @@ import pygame
 def main():
     pygame.init()
     screen = pygame.display.set_mode((800, 600))
-    pygame.display.set_caption("Super Mario Carne")
+    pygame.display.set_caption("Jogo")
     clock = pygame.time.Clock()
 
     running = True

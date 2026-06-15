@@ -1,6 +1,6 @@
-# Super Mario Carne
+# Super Mario Carne 🥩
 
-Super Mario Carne é um jogo desenvolvido com a biblioteca Pygame, inspirado no clássico Super Mario, porém com a temática de churrasco e Copa do Mundo.
+Jogo desenvolvido com a biblioteca Pygame, inspirado no clássico Super Mario, porém com a temática de churrasco e Copa do Mundo.
 
 ## Equipe
 
@@ -11,10 +11,16 @@ Super Mario Carne é um jogo desenvolvido com a biblioteca Pygame, inspirado no 
 - Rafael Salles
 - Rafael Vitor
 
+## Como rodar
+
+```bash
+pip install pygame
+python main.py
+```
+
 ## Divisão de tarefas
 
 ### Coletáveis
-
-- Carne:
-- Carvão:
-- Breja:
+- 🥩 Carne
+- 🍺 Breja
+- 🪨 Carvão
