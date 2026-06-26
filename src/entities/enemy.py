@@ -3,9 +3,9 @@ class Enemy:
     def __init__(self, x ,y):
         self.x=x
         self.y=y
-        self.width=40
-        self.height=40
-        self.speed=2
+        self.width=35
+        self.height=35
+        self.speed=1
         self.image= pygame.image.load("Projeto-IP/src/images/inimigo.png").convert_alpha()
         self.image = pygame.transform.scale(self.image, (self.width, self.height))
         self.image_original = self.image
