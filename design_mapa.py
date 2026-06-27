@@ -10,23 +10,6 @@ COR_PLAT      = ( 34, 139,  34)
 COR_PLAT_TOP  = ( 50, 205,  50)
 COR_JOGADOR   = (220,  20,  60)
  
-# ============================================================
-#  MAPA — EDITE AQUI!
-#
-#  O mapa tem 18 linhas (0–17) e 170 colunas (0–169).
-#  Linha 14 é onde o chão começa.
-#  Altura máxima do pulo: ~4 tiles acima do chão = linha 10.
-#
-#  BURACOS: cada entrada é (coluna_inicio, coluna_fim)
-#  PLATAFORMAS: cada entrada é (linha, coluna_inicio, coluna_fim)
-#
-#  Exemplo — adicionar uma plataforma na linha 11, colunas 20 a 23:
-#      (11, 20, 23),
-#
-#  Exemplo — adicionar um buraco nas colunas 30 a 33:
-#      (30, 33),
-# ============================================================
- 
 MAP_COLS = 170
 MAP_ROWS = 18
  
