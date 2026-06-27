@@ -1,3 +1,6 @@
+import pygame
+import sys
+
 TILE      = 32
 SCREEN_W  = 800
 SCREEN_H  = 576
