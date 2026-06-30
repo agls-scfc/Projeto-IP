@@ -12,8 +12,6 @@ COR_PLAT      = ( 34, 139,  34)
 COR_PLAT_TOP  = ( 50, 205,  50)
 COR_JOGADOR   = (220,  20,  60)
 
-#  MAPA — EDITE AQUI!
-
 #  BURACOS:     (coluna_inicio, coluna_fim)
 #  PLATAFORMAS: (linha, coluna_inicio, coluna_fim)
 #  INIMIGOS:    (linha, coluna)
