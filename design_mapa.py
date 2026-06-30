@@ -1,11 +1,10 @@
 import pygame
 import sys
-
 TILE      = 32
 SCREEN_W  = 800
 SCREEN_H  = 576
 FPS       = 60
-# Essas cores eu deixei só pra testar o mapa
+
 COR_CEU       = (135, 206, 235)
 COR_CHAO      = (139,  69,  19)
 COR_CHAO_TOP  = (160,  82,  45)
@@ -13,13 +12,17 @@ COR_PLAT      = ( 34, 139,  34)
 COR_PLAT_TOP  = ( 50, 205,  50)
 COR_JOGADOR   = (220,  20,  60)
 
+#  MAPA — EDITE AQUI!
+
 #  BURACOS:     (coluna_inicio, coluna_fim)
 #  PLATAFORMAS: (linha, coluna_inicio, coluna_fim)
 #  INIMIGOS:    (linha, coluna)
 #  COLETAVEIS:  (linha, coluna, cor)
+#  ESCADA:      (coluna, altura)  -> blocos sólidos empilhados sobre o chão
+#  BANDEIRA:    (linha_base, coluna)
 
 
-MAP_COLS = 220
+MAP_COLS = 245
 MAP_ROWS = 18
 
 BURACOS = [
@@ -34,8 +37,6 @@ BURACOS = [
     (134, 138),
     (145, 150),
     (156, 160),
-
-    # --- EXTENSÃO (seções 9-11) ---
     (170, 174),
     (181, 187),
     (194, 200),
@@ -56,17 +57,16 @@ PLATAFORMAS = [
     (11,  92,  93),
     (10,  95,  97),
     (12, 105, 107),
-    (11, 111, 114),
+    (11, 112, 113),
     (12, 118, 120),
     (12, 129, 131),
-    (10, 134, 137),
+    (10, 135, 136),
     (11, 147, 147),
     (12, 152, 154),
     (10, 157, 159),
     (12, 163, 165),
     (11, 183, 185),
     (11, 196, 198),
-    (12, 202, 203),
     (10, 204, 205),
     (11, 208, 211),
     (11, 216, 218),
@@ -87,7 +87,7 @@ INIMIGOS = [
     (13, 130),
     (13, 142),
     (11, 153),
-
+    # --- EXTENSÃO ---
     (13, 167),
     (13, 178),
     (10, 184),
@@ -98,16 +98,28 @@ INIMIGOS = [
 ]
 
 COLETAVEIS = [
-    # --- Carvão ---
-    ( 5, 100, "carvao"),
-    ( 8, 184, "carvao"),
-    ( 8, 205, "carvao"),
+    # --- carvao ---
+    ( 5, 100, "amarela"),
+    ( 8, 184, "amarela"),
+    ( 8, 205, "amarela"),
 
-    # --- Breja ---
-    ( 9, 135, "breja"),
-    ( 9, 197, "breja"),
+    # --- carne ---
+    ( 9, 135, "vermelha"),
+    ( 9, 197, "vermelha"),
 
-    # --- Carne ---
-    (11,  46, "carne"),
-    (11, 164, "carne"),
+    # --- breja ---
+    (11,  46, "azul"),
+    (11, 164, "azul"),
 ]
+
+ESCADA = [
+    (228, 1),
+    (229, 2),
+    (230, 3),
+    (231, 4),
+    (232, 5),
+    (233, 6),
+    (234, 6),
+]
+# Bandeira de chegada (placeholder, sem função ainda).
+BANDEIRA = (13, 240)
