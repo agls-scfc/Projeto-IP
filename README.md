@@ -8,12 +8,23 @@ Jogo de plataforma 2D inspirado no *Super Mario Bros.* clássico, com a temátic
 
 ## Equipe
 
-- Arthur Salazar
-- Eduardo Cabral
-- João Pedro Santos
-- Pedro Henrique Cavalcanti
-- Rafael Salles
-- Rafael Vitor
+| Usuário | Nome |
+|---------|------|
+| agls | Arthur Salazar |
+| eccs | Eduardo Cabral |
+| jpmcs | João Pedro Santos |
+| phrbc | Pedro Henrique Cavalcanti |
+| rsm8 | Rafael Salles |
+| rvsc2 | Rafael Vitor |
+
+---
+
+## Objetivos do projeto
+
+- Criar um jogo divertido de jogar e de passar o tempo
+- Celebrar a Copa do Mundo e a seleção brasileira
+- Aprofundar conhecimentos sobre lógica de programação, gerenciamento de tarefas, plataformas de versionamento, bibliotecas em Python, entre outros
+- Adquirir habilidades essenciais para um profissional na área de tecnologia
 
 ---
 
@@ -76,28 +87,12 @@ A "main" (laço principal) controla a passagem entre os estados do jogo:
    - **Game over** → as vidas acabaram.
 4. Das telas de vitória / game over → o jogador pode reiniciar ou sair.
 
-*(Um diagrama visual desse fluxo pode ser adicionado aqui depois.)*
-
----
-
-## Detalhes de implementação
-
-- **Câmera:** como o nível é maior que a tela, a câmera acompanha o Mario conforme ele avança. O cenário de fundo é único (pode ser incrementado depois).
-- **Pontuação:** não há um sistema de pontos separado; a contagem de coletáveis exibida na tela cumpre o registro exigido pela disciplina.
-
-### Ainda em definição
-
-Pontos que a equipe ainda vai fechar:
-
-1. **Inimigos:** se será possível derrotá-los pulando na cabeça (estilo Mario) ou apenas desviar. Em ambos os casos, encostar de lado custa uma vida.
-2. **Carvão insuficiente no fim:** o que acontece se o Mario chegar ao final sem os 5 carvões (proposta atual: a churrasqueira final não acende e o jogador precisa voltar para coletar o que falta).
-
 ---
 
 ## Como rodar
 
 ```bash
-pip install pygame
+pip install pygame-ce
 python main.py
 ```
 
@@ -107,36 +102,52 @@ python main.py
 
 ## Arquitetura do projeto
 
-*A preencher conforme o código for escrito.* Visão geral planejada:
+O código está organizado dentro da pasta `src/`:
 
-- `main.py` — laço principal do jogo (game loop): cria os objetos, lê comandos, atualiza o estado, checa colisões, conta coletáveis e desenha tudo na tela.
-- `src/entities/` — classes dos elementos do jogo:
-  - `player.py` — o Mario (movimento, pulo, vidas).
-  - `enemy.py` — os inimigos.
-  - `collectibles.py` — os coletáveis (carne, carvão, cerveja).
-- `src/images/` — imagens (sprites) usadas no jogo.
+```
+Projeto-IP/
+├── main.py                  — laço principal do jogo
+├── README.md
+└── src/
+    ├── entities/            — classes dos elementos do jogo
+    │   ├── player.py        — o Mario (movimento, pulo, vidas)
+    │   ├── enemy.py         — os inimigos
+    │   └── collectibles.py  — os coletáveis (carne, carvão, cerveja)
+    └── images/              — sprites e imagens usadas no jogo
+```
+
+`main.py` é o ponto de entrada: cria os objetos, lê os comandos do teclado, atualiza o estado do jogo, checa colisões, conta coletáveis e desenha tudo na tela a cada frame.
 
 ---
 
 ## Tecnologias utilizadas
 
-- **Python** — linguagem exigida pela disciplina.
-- **Pygame** — biblioteca para criação de jogos 2D em Python. *(Justificativa a detalhar no relatório: facilita o desenho na tela, a captura do teclado e a detecção de colisões, sendo a ferramenta tradicionalmente usada nesses projetos.)*
+| Ferramenta | Uso | Justificativa |
+|------------|-----|---------------|
+| **Python** | Linguagem principal | Exigida pela disciplina |
+| **Pygame-CE** | Motor do jogo 2D | Facilita o desenho na tela, a captura do teclado e a detecção de colisões; é a biblioteca mais usada para esse tipo de projeto em Python. A edição Community (CE) foi adotada por oferecer suporte ao Python 3.14, versão utilizada pela equipe. |
+| **VS Code** | IDE | Editor leve com bom suporte a Python e integração nativa com Git |
+| **GitHub** | Hospedagem do código e documentação | Permite versionamento, histórico de mudanças e colaboração entre os membros da equipe |
+| **Discord / WhatsApp** | Comunicação | Usados para reuniões, alinhamentos e notificação de avanços e problemas |
 
 ---
 
 ## Divisão de tarefas
 
-*A preencher pela equipe (o relatório exige indicar quem fez o quê).*
-
 | Integrante | Responsabilidade |
-|------------|------------------|
-| Rafael Vitor | `main.py` / lógica e laço principal do jogo |
-| *(preencher)* | Personagem / Mario |
-| *(preencher)* | Coletáveis |
-| *(preencher)* | Inimigos |
-| *(preencher)* | Cenário / arte |
-| *(preencher)* | ... |
+|------------|-----------------|
+| Arthur Salazar | Coletáveis (`collectibles.py`) e slides de apresentação |
+| Eduardo Cabral | Imagens, músicas e suas implementações |
+| João Pedro Santos | Código do Player e dos inimigos |
+| Pedro Henrique Cavalcanti | Criação do nível e alocação dos elementos no jogo |
+| Rafael Salles | Implementação dos arquivos e funções na `main.py` |
+| Rafael Vitor | Implementação dos arquivos e funções na `main.py` |
+
+---
+
+## Métodos de organização
+
+Após definir a temática e as funcionalidades principais do jogo, a equipe buscou modularizar o desenvolvimento ao máximo, com cada membro responsável por sua parte. A comunicação foi feita principalmente pelo grupo de WhatsApp, para notificar problemas e avanços e manter o alinhamento sobre o andamento do projeto.
 
 ---
 
@@ -148,8 +159,14 @@ python main.py
 
 ## Relatório: desafios e lições
 
-*A preencher ao final do projeto (perguntas exigidas pela disciplina):*
+Por sermos todos iniciantes, os desafios foram muitos e os erros abundantes. Os principais foram:
 
-- Qual foi o maior erro cometido durante o projeto? Como lidaram com ele?
-- Qual foi o maior desafio enfrentado? Como lidaram com ele?
-- Quais as lições aprendidas?
+**Erros enfrentados:**
+- Erros de instalação (versões incompatíveis de Pygame e Python)
+- Erros de Git e GitHub (commits mal organizados, má organização do repositório)
+
+**Desafios enfrentados:**
+- Falta de gerenciamento formal de tarefas (não utilizamos Notion, Trello, etc.)
+- Aprender Orientação a Objetos do zero
+- Debugar arquivos diferentes integrados entre si
+- Entender como o Pygame funciona e como usar suas funções corretamente
