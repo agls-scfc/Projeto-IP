@@ -9,6 +9,7 @@ class Player:
         self.speed = 2
         self.velocidade_y = 0
         self.no_chao = True
+        self.vida= 3
 
         # sprites
         self.sheet_walk = pygame.image.load("src/images/playerwalksprites.png").convert_alpha()
