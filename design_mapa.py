@@ -1,5 +1,6 @@
 import pygame
 import sys
+
 TILE      = 32
 SCREEN_W  = 800
 SCREEN_H  = 576
@@ -13,111 +14,83 @@ COR_PLAT_TOP  = ( 50, 205,  50)
 COR_JOGADOR   = (220,  20,  60)
 
 #  BURACOS:     (coluna_inicio, coluna_fim)
-#  PLATAFORMAS: (linha, coluna_inicio, coluna_fim)
-#  INIMIGOS:    (linha, coluna)
-#  COLETAVEIS:  (linha, coluna, cor)
-#  ESCADA:      (coluna, altura)  -> blocos sólidos empilhados sobre o chão
+#  PLATAFORMAS: (linha, coluna_inicio, coluna_fim)  -> so nas linhas 9, 10 ou 11
+#  INIMIGOS:    (linha, coluna)                      -> linha 13 = sobre o chao
+#  COLETAVEIS:  (linha, coluna, cor)                 -> amarela=carvao, vermelha=carne, azul=breja
+#  ESCADA:      (coluna, altura)
 #  BANDEIRA:    (linha_base, coluna)
 
-
-MAP_COLS = 245
+MAP_COLS = 160
 MAP_ROWS = 18
 
+# Buracos no chao (largura no maximo 4, faceis de pular)
 BURACOS = [
-    ( 24,  27),
-    ( 33,  38),
-    ( 52,  57),
-    ( 70,  73),
-    ( 82,  85),
+    ( 26,  28),
+    ( 44,  46),
+    ( 62,  65),
+    ( 80,  82),
     ( 98, 101),
-    (110, 115),
-    (122, 125),
-    (134, 138),
-    (145, 150),
-    (156, 160),
-    (170, 174),
-    (181, 187),
-    (194, 200),
-    (207, 212),
+    (116, 118),
+    (132, 135),
 ]
 
+# Plataformas SO nas linhas 9, 10 e 11 (nunca 12/13), para o Mario de 60px
+# caber por baixo (vao minimo de 64px) e ainda alcancar com o pulo.
 PLATAFORMAS = [
-    # (linha, col_inicio, col_fim)
-
-    (11,  16,  18),
-    (11,  29,  31),
-    (11,  35,  36),
-    (11,  45,  47),
-    (11,  54,  55),
-    (11,  62,  64),
-    (11,  71,  72),
+    (11,  15,  17),
+    (10,  31,  33),
+    (11,  38,  40),
+    (10,  52,  54),
+    ( 9,  58,  60),
+    (11,  68,  70),
+    (10,  74,  76),
     (11,  88,  90),
-    (11,  92,  93),
-    (10,  95,  97),
-    (11, 105, 107),
-    (11, 112, 113),
-    (11, 118, 120),
-    (11, 129, 131),
-    (10, 135, 136),
-    (11, 147, 147),
+    (10,  92,  94),
+    ( 9, 104, 106),
+    (11, 110, 112),
+    (10, 122, 124),
+    (11, 128, 130),
+    ( 9, 140, 142),
+    (10, 146, 148),
     (11, 152, 154),
-    (10, 157, 159),
-    (11, 163, 165),
-    (11, 183, 185),
-    (11, 196, 198),
-    (10, 204, 205),
-    (11, 208, 211),
-    (11, 216, 218),
 ]
 
+# Inimigos, todos sobre o chao (linha 13), longe dos buracos
 INIMIGOS = [
-    # (linha, coluna)
-    # Linha 13 = sobre o chão | (linha_plataforma - 1) = sobre plataforma
     (13,  12),
-    (13,  30),
-    (13,  44),
-    (13,  63),
-    (13,  78),
+    (13,  32),
+    (13,  50),
+    (13,  72),
     (13,  90),
-    ( 9,  96),
-    (13, 106),
-    (11, 119),
-    (13, 130),
-    (13, 142),
-    (11, 153),
-    # --- EXTENSÃO ---
-    (13, 167),
-    (13, 178),
-    (10, 184),
-    (13, 191),
-    (10, 197),
-    (13, 203),
-    (13, 215),
+    (13, 104),
+    (13, 112),
+    (13, 126),
+    (13, 144),
 ]
 
+# Coletaveis: 6 carvao, 4 carne, 4 breja (todos alcancaveis)
 COLETAVEIS = [
-    # --- carvao ---
-    ( 5, 100, "amarela"),
-    ( 8, 184, "amarela"),
-    ( 8, 205, "amarela"),
-
-    # --- carne ---
-    ( 9, 135, "vermelha"),
-    ( 9, 197, "vermelha"),
-
-    # --- breja ---
-    (11,  46, "azul"),
-    (11, 164, "azul"),
+    # --- carvao (amarela) ---
+    (13,  20, "amarela"),
+    (10,  16, "amarela"),
+    ( 9,  32, "amarela"),
+    ( 8,  59, "amarela"),
+    (10,  89, "amarela"),
+    ( 8, 105, "amarela"),
+    # --- carne (vermelha) ---
+    (13,  36, "vermelha"),
+    ( 9,  75, "vermelha"),
+    (13, 108, "vermelha"),
+    (10, 129, "vermelha"),
+    # --- breja (azul) ---
+    (13,  48, "azul"),
+    (13,  84, "azul"),
+    (10, 111, "azul"),
+    ( 8, 141, "azul"),
 ]
 
-ESCADA = [
-    (228, 1),
-    (229, 2),
-    (230, 3),
-    (231, 4),
-    (232, 5),
-    (233, 6),
-    (234, 6),
-]
-# Bandeira de chegada (placeholder, sem função ainda).
-BANDEIRA = (13, 240)
+# Sem escada (era so decorativa e atrapalhava). Fica a lista vazia.
+ESCADA = []
+
+# Bandeira de chegada, no chao perto do fim do nivel
+BANDEIRA = (13, 156)
