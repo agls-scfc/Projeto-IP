@@ -38,7 +38,7 @@ Durante a partida, o jogo mantém e exibe na tela a contagem de cada tipo de col
 
 ## Como jogar
 
-**Objetivo:** chegar ao fim do nível tendo coletado os 5 carvões, sobrevivendo aos inimigos e aos buracos do mapa.
+**Objetivo:** chegar ao fim do nível tendo coletado os 6 carvões, sobrevivendo aos inimigos e aos buracos do mapa.
 
 **Controles:**
 
@@ -70,7 +70,7 @@ O jogo tem **três tipos** de coletáveis, cada um com um efeito diferente. A qu
 
 **Queda no mapa.** Cair em um buraco custa 1 vida e faz o Mario voltar ao início do nível.
 
-**Vitória.** Acontece quando o Mario chega ao final do nível tendo coletado os 5 carvões.
+**Vitória.** Acontece quando o Mario chega ao final do nível tendo coletado os 6 carvões.
 
 **Derrota (game over).** Acontece quando as 3 vidas chegam a zero.
 
@@ -83,7 +83,7 @@ A "main" (laço principal) controla a passagem entre os estados do jogo:
 1. **Menu inicial** → o jogador aperta uma tecla para começar.
 2. **Jogando** → o laço principal roda: lê comandos, move tudo, checa colisões, conta coletáveis e desenha a tela.
 3. A partir do "Jogando", o jogo pode ir para:
-   - **Vitória** → chegou ao fim com os 5 carvões.
+   - **Vitória** → chegou ao fim com os 6 carvões.
    - **Game over** → as vidas acabaram.
 4. Das telas de vitória / game over → o jogador pode reiniciar ou sair.
 
@@ -126,6 +126,7 @@ Projeto-IP/
 |------------|-----|---------------|
 | **Python** | Linguagem principal | Exigida pela disciplina |
 | **Pygame-CE** | Motor do jogo 2D | Facilita o desenho na tela, a captura do teclado e a detecção de colisões; é a biblioteca mais usada para esse tipo de projeto em Python. A edição Community (CE) foi adotada por oferecer suporte ao Python 3.14, versão utilizada pela equipe. |
+| **Gemini** | Geração de imagens e música | Utilizado para criar os sprites, ilustrações e a trilha sonora do jogo, agilizando a produção de assets sem exigir habilidades manuais de design ou composição musical. |
 | **VS Code** | IDE | Editor leve com bom suporte a Python e integração nativa com Git |
 | **GitHub** | Hospedagem do código e documentação | Permite versionamento, histórico de mudanças e colaboração entre os membros da equipe |
 | **Discord / WhatsApp** | Comunicação | Usados para reuniões, alinhamentos e notificação de avanços e problemas |
@@ -147,13 +148,27 @@ Projeto-IP/
 
 ## Métodos de organização
 
-Após definir a temática e as funcionalidades principais do jogo, a equipe buscou modularizar o desenvolvimento ao máximo, com cada membro responsável por sua parte. A comunicação foi feita principalmente pelo grupo de WhatsApp, para notificar problemas e avanços e manter o alinhamento sobre o andamento do projeto. Ao longo do processo, diversas mudanças tiveram que ser feitas e escolhas de design repensadas, comumente trocavamos ideias e possibilidades para decidir o produto final. Utilizamos diversas enquetes entre o grupo para tomar essas decisões com a ciência e conscentimento de todos.
+Após definir a temática e as funcionalidades principais do jogo, a equipe buscou modularizar o desenvolvimento ao máximo, com cada membro responsável por sua parte. A comunicação foi feita principalmente pelo grupo de WhatsApp, para notificar problemas e avanços e manter o alinhamento sobre o andamento do projeto. Ao longo do processo, diversas mudanças tiveram que ser feitas e escolhas de design repensadas; comumente trocávamos ideias e possibilidades para decidir o produto final. Utilizamos diversas enquetes entre o grupo para tomar essas decisões com a ciência e consentimento de todos.
 
 ---
 
 ## Galeria
 
-*Capturas de tela do jogo funcionando — a preencher.*
+**Início da fase**
+
+![Início da fase](src/images/prints do jogo/screenshot1.png)
+
+**Boost de cerveja ativo**
+
+![Boost de cerveja ativo](src/images/prints do jogo/screenshot2.png)
+
+**Tela de vitória**
+
+![Tela de vitória](src/images/prints do jogo/screenshot3.png)
+
+**Game Over**
+
+![Game Over](src/images/prints do jogo/screenshot4.png)
 
 ---
 
@@ -170,3 +185,9 @@ Por sermos todos iniciantes, os desafios foram muitos e os erros abundantes. Os 
 - Aprender Orientação a Objetos do zero
 - Debugar arquivos diferentes integrados entre si
 - Entender como o Pygame funciona e como usar suas funções corretamente
+
+*Respostas completas às perguntas do relatório — a preencher ao final do projeto:*
+
+- Qual foi o maior erro cometido durante o projeto? Como vocês lidaram com ele?
+- Qual foi o maior desafio enfrentado durante o projeto? Como vocês lidaram com ele?
+- Quais as lições aprendidas durante o projeto?
