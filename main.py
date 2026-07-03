@@ -1,8 +1,8 @@
 import pygame
-import design_mapa as mapa
-from src.entities.player import Player
-from src.entities.enemy import Enemy
-from src.entities.collectibles import Carne, Carvao, Cerveja
+from src.script import design_mapa as mapa
+from src.script.player import Player
+from src.script.enemy import Enemy
+from src.script.collectibles import Carne, Carvao, Cerveja
 
 
 # ------------------------- CONSTANTES DO JOGO -------------------------------
@@ -323,6 +323,7 @@ def desenhar_overlay(tela, fonte_grande, fonte, titulo, cor, subtitulo):
 
 def main():
     pygame.init()
+    pygame.mixer.init()                    # liga o sistema de audio
     tela = pygame.display.set_mode((SCREEN_W, SCREEN_H))
     pygame.display.set_caption("Super Mario Carne")
     relogio = pygame.time.Clock()
@@ -330,6 +331,11 @@ def main():
     fonte_grande = pygame.font.SysFont(None, 64)
 
     carregar_imagens()
+
+    # trilha sonora em loop infinito
+    pygame.mixer.music.load("src/musica/trilhasonora.mp3")
+    pygame.mixer.music.set_volume(0.5)     # volume de 0.0 a 1.0
+    pygame.mixer.music.play(-1)            # -1 = repete pra sempre
     estado = "MENU"
     jogo = novo_jogo()
 
