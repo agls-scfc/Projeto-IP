@@ -1,6 +1,6 @@
 # Super Mario Carne 🥩🇧🇷
 
-Jogo de plataforma 2D inspirado no *Super Mario Bros.* clássico, com a temática do Brasil em clima de Copa do Mundo (o "Rumo ao Hexa") e de churrasco. Desenvolvido em Python com a biblioteca Pygame, como projeto da disciplina de Introdução à Programação.
+Jogo de plataforma 2D inspirado no *Super Mario Bros.* clássico, com a temática do Brasil em clima de Copa do Mundo e de churrasco. Desenvolvido em Python com a biblioteca Pygame, como projeto da disciplina de Introdução à Programação.
 
 > **Sobre este documento:** este README registra a ideia e as regras do jogo e vai crescendo ao longo do projeto até virar o relatório final exigido pela disciplina (arquitetura, bibliotecas, divisão de tarefas, desafios e lições). As seções marcadas com *a preencher* serão completadas conforme o projeto avança.
 
@@ -30,7 +30,7 @@ Jogo de plataforma 2D inspirado no *Super Mario Bros.* clássico, com a temátic
 
 ## Conceito do jogo
 
-O jogador controla o Mario num único nível grande e horizontal, num cenário brasileiro: prédios verde-amarelos, faixa de "Rumo ao Hexa", bandeira do Brasil, estádio ao fundo e churrasqueiras espalhadas pelo caminho. O objetivo é atravessar o nível coletando itens, desviando dos inimigos e dos buracos, e chegando ao final com os 5 carvões necessários para "acender a churrasqueira" e vencer.
+O jogador controla o Mario num único nível grande e horizontal, num cenário brasileiro: prédios verde-amarelos, faixa de "Rumo ao Hexa", bandeira do Brasil, estádio ao fundo e churrasqueiras espalhadas pelo caminho. O objetivo é atravessar o nível coletando itens, desviando dos inimigos e dos buracos, e chegando ao final com os 6 carvões necessários para "acender a churrasqueira" e vencer.
 
 Durante a partida, o jogo mantém e exibe na tela a contagem de cada tipo de coletável (requisito da disciplina).
 
@@ -56,7 +56,7 @@ O jogo tem **três tipos** de coletáveis, cada um com um efeito diferente. A qu
 | Coletável | Efeito |
 |-----------|--------|
 | 🥩 **Carne** | Recupera 1 vida do Mario, até o máximo de 3 vidas. |
-| 🪨 **Carvão** | Item-objetivo: é preciso coletar **5 carvões** para conseguir terminar o nível com sucesso. |
+| 🪨 **Carvão** | Item-objetivo: é preciso coletar **6 carvões** para conseguir terminar o nível com sucesso. |
 | 🍺 **Cerveja** | *Boost* que aumenta a velocidade do Mario por **5 segundos**. |
 
 ---
