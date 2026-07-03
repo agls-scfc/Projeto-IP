@@ -147,7 +147,7 @@ Projeto-IP/
 
 ## Métodos de organização
 
-Após definir a temática e as funcionalidades principais do jogo, a equipe buscou modularizar o desenvolvimento ao máximo, com cada membro responsável por sua parte. A comunicação foi feita principalmente pelo grupo de WhatsApp, para notificar problemas e avanços e manter o alinhamento sobre o andamento do projeto.
+Após definir a temática e as funcionalidades principais do jogo, a equipe buscou modularizar o desenvolvimento ao máximo, com cada membro responsável por sua parte. A comunicação foi feita principalmente pelo grupo de WhatsApp, para notificar problemas e avanços e manter o alinhamento sobre o andamento do projeto. Ao longo do processo, diversas mudanças tiveram que ser feitas e escolhas de design repensadas, comumente trocavamos ideias e possibilidades para decidir o produto final. Utilizamos diversas enquetes entre o grupo para tomar essas decisões com a ciência e conscentimento de todos.
 
 ---
 
