@@ -15,9 +15,9 @@ FPS         = mapa.FPS
 LINHA_CHAO  = 14
 MAP_LARGURA = mapa.MAP_COLS * TILE
 
-CARVOES_PARA_VENCER = 3           # quantos carvoes precisa pra vencer
+CARVOES_PARA_VENCER = 6           # quantos carvoes precisa pra vencer
 INIMIGO_TAMANHO = 60              # tamanho dos inimigos em pixels
-TAM_COLETAVEL   = 34              # tamanho dos coletaveis na tela
+TAM_COLETAVEL   = 50              # tamanho dos coletaveis na tela
 MORTE_QUEDA_Y   = 480
 
 INICIO_X = 2 * TILE

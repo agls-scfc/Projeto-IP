@@ -6,11 +6,11 @@ SCREEN_W  = 800
 SCREEN_H  = 576
 FPS       = 60
 
-COR_CEU       = (135, 206, 235)
-COR_CHAO      = (139,  69,  19)
-COR_CHAO_TOP  = (160,  82,  45)
-COR_PLAT      = ( 34, 139,  34)
-COR_PLAT_TOP  = ( 50, 205,  50)
+COR_CEU       = (15, 10, 5)
+COR_CHAO     = (101, 67, 33)
+COR_CHAO_TOP = (120, 85, 45)
+COR_PLAT     = (180, 40, 20)
+COR_PLAT_TOP = (220, 80, 50)
 COR_JOGADOR   = (220,  20,  60)
 
 #  BURACOS:     (coluna_inicio, coluna_fim)
@@ -23,18 +23,18 @@ COR_JOGADOR   = (220,  20,  60)
 MAP_COLS = 160
 MAP_ROWS = 18
 
-# Buracos no chao (largura no maximo 4, faceis de pular)
+# Buracos no chao
 BURACOS = [
-    ( 26,  28),
-    ( 44,  46),
+    ( 24,  28),
+    ( 42,  46),
     ( 62,  65),
-    ( 80,  82),
-    ( 98, 101),
-    (116, 118),
-    (132, 135),
+    ( 78,  82),
+    ( 97, 101),
+    (115, 118),
+    (131, 135),
 ]
 
-# Plataformas SO nas linhas 9, 10 e 11 (nunca 12/13), para o Mario de 60px
+# Plataformas só nas linhas 9, 10 e 11 (nunca 12/13), para o player de 60px
 # caber por baixo (vao minimo de 64px) e ainda alcancar com o pulo.
 PLATAFORMAS = [
     (11,  15,  17),
