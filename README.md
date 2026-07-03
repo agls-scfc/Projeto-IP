@@ -2,8 +2,6 @@
 
 Jogo de plataforma 2D inspirado no *Super Mario Bros.* clássico, com a temática do Brasil em clima de Copa do Mundo e de churrasco. Desenvolvido em Python com a biblioteca Pygame, como projeto da disciplina de Introdução à Programação.
 
-> **Sobre este documento:** este README registra a ideia e as regras do jogo e vai crescendo ao longo do projeto até virar o relatório final exigido pela disciplina (arquitetura, bibliotecas, divisão de tarefas, desafios e lições). As seções marcadas com *a preencher* serão completadas conforme o projeto avança.
-
 ---
 
 ## Equipe
@@ -96,24 +94,23 @@ pip install pygame-ce
 python main.py
 ```
 
-*(Instruções detalhadas a preencher quando o jogo estiver rodando.)*
-
 ---
 
 ## Arquitetura do projeto
 
-O código está organizado dentro da pasta `src/`:
-
 ```
 Projeto-IP/
-├── main.py                  — laço principal do jogo
+├── main.py        — ponto de entrada; inicia e roda o jogo
 ├── README.md
-└── src/
-    ├── entities/            — classes dos elementos do jogo
-    │   ├── player.py        — o Mario (movimento, pulo, vidas)
+├── .gitignore
+└── src/           — todo o conteúdo do jogo
+    ├── script/    — arquivos de código
+    │   ├── collectibles.py  — os coletáveis (carne, carvão, cerveja)
+    │   ├── design_mapa.py   — definição do mapa e posição dos elementos
     │   ├── enemy.py         — os inimigos
-    │   └── collectibles.py  — os coletáveis (carne, carvão, cerveja)
-    └── images/              — sprites e imagens usadas no jogo
+    │   └── player.py        — o Mario (movimento, pulo, vidas)
+    ├── images/    — sprites e imagens usadas no jogo
+    └── musica/    — trilha sonora do jogo
 ```
 
 `main.py` é o ponto de entrada: cria os objetos, lê os comandos do teclado, atualiza o estado do jogo, checa colisões, conta coletáveis e desenha tudo na tela a cada frame.
@@ -152,6 +149,26 @@ Após definir a temática e as funcionalidades principais do jogo, a equipe busc
 
 ---
 
+## Conceitos da disciplina utilizados no projeto
+
+Ao longo do semestre, fizemos 6 listas de questões em Python, cada uma com um assunto. Todos esses conceitos foram aplicados diretamente no projeto:
+
+**Lista 1. Comandos condicionais** — usados extensivamente no `main.py` para controlar os estados do jogo (jogando, vitória, game over), verificar colisões e checar se o jogador coletou os 6 carvões necessários para vencer. Também presentes em `player.py` para tratar eventos de teclado e em `collectibles.py` para identificar o tipo de coletável coletado.
+
+**Lista 2. Laços de repetição** — o game loop principal em `main.py` é um laço `while` que roda a cada frame do jogo, atualizando todos os elementos da tela. Laços `for` são usados para iterar sobre listas de coletáveis, inimigos e plataformas definidas em `design_mapa.py`.
+
+**Lista 3. Listas** — utilizadas em `design_mapa.py` para armazenar as posições de todos os elementos do mapa: buracos, plataformas, inimigos e coletáveis. O `main.py` percorre essas listas para instanciar os objetos do jogo.
+
+**Lista 4. Funções** — o código é organizado em funções tanto no `main.py` (ex: `carregar_imagens()`, `main()`) quanto nos arquivos de entidades, separando responsabilidades e evitando repetição de código.
+
+**Lista 5. Recursão** — aplicada em situações de lógica de jogo que envolvem verificações encadeadas, como o tratamento de estados consecutivos do personagem.
+
+**Lista 6. Tuplas e dicionários** — as cores do cenário em `design_mapa.py` são definidas como tuplas RGB (ex: `COR_CHAO = (101, 67, 33)`). Dicionários são usados no `main.py` para organizar e acessar as imagens carregadas (`IMAGENS["carne"]`, `IMAGENS["carvao"]`, etc.).
+
+**Orientação a Objetos (POO)** — pilar central do projeto. Implementamos uma hierarquia de classes em `collectibles.py`: a classe base `Collectible` (que herda de `pygame.sprite.Sprite`) define o comportamento comum a todos os coletáveis, e as subclasses `Carne`, `Carvao` e `Cerveja` herdam dela e implementam seus efeitos específicos via o método `aplicar_efeito()`. O mesmo padrão é seguido em `player.py` e `enemy.py`.
+
+---
+
 ## Galeria
 
 **Início da fase**
@@ -174,14 +191,16 @@ Após definir a temática e as funcionalidades principais do jogo, a equipe busc
 
 ## Relatório: desafios e lições
 
-Por sermos todos iniciantes, os desafios foram muitos e os erros abundantes. Os principais foram:
+Por sermos todos iniciantes, os desafios foram muitos e os erros abundantes.
 
-**Erros enfrentados:**
-- Erros de instalação (versões incompatíveis de Pygame e Python)
-- Erros de Git e GitHub (commits mal organizados, má organização do repositório)
+**Qual foi o maior erro cometido durante o projeto? Como vocês lidaram com ele?**
 
-**Desafios enfrentados:**
-- Falta de gerenciamento formal de tarefas (não utilizamos Notion, Trello, etc.)
-- Aprender Orientação a Objetos do zero
-- Debugar arquivos diferentes integrados entre si
-- Entender como o Pygame funciona e como usar suas funções corretamente
+O maior erro foi não ter usado uma plataforma de gerenciamento de tarefas, isso acarretou em muitos erros de implementação que custaram tempo para ser consertados. Não estávamos suficientemente cientes de como as partes dos outros participantes funcionavam e como elas interagiam entre si. Lidamos com o problema através de comunicação constante pelo WhatsApp e reuniões para alinhar o andamento de cada parte.
+
+**Qual foi o maior desafio enfrentado durante o projeto? Como vocês lidaram com ele?**
+
+Aprender à utilizar versionamento de código ao mesmo tempo que aprendíamos sobre POO e pygame. Demoramos a ter segurança nos comandos que executávamos no terminal e entender como eles alterariam o funcionamento do nosso código, especialmente por estarmos lidando com uma parte da linguagem Python que não conheciamos. Superamos isso com pesquisa, tentativa e erro, e apoio mútuo entre os integrantes.
+
+**Quais as lições aprendidas durante o projeto?**
+
+Aprendemos como é participar de um projeto coletivo de verdade, como é trabalhar com códigos de outras pessoas e como funciona a criação de um jogo. Aprendemos principalmente quais erros não podemos cometer em projetos como esse. Logo, conquistamos conhecimentos que serão úteis para toda a nossa carreira. Hard skills (bibliotecas, POO, versionamento) e soft skills (organização, gerenciamento de tarefas).
