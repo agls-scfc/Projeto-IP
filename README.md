@@ -185,9 +185,3 @@ Por sermos todos iniciantes, os desafios foram muitos e os erros abundantes. Os 
 - Aprender Orientação a Objetos do zero
 - Debugar arquivos diferentes integrados entre si
 - Entender como o Pygame funciona e como usar suas funções corretamente
-
-*Respostas completas às perguntas do relatório — a preencher ao final do projeto:*
-
-- Qual foi o maior erro cometido durante o projeto? Como vocês lidaram com ele?
-- Qual foi o maior desafio enfrentado durante o projeto? Como vocês lidaram com ele?
-- Quais as lições aprendidas durante o projeto?
