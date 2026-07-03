@@ -9,7 +9,7 @@ class Collectible(pygame.sprite.Sprite):
 
     def aplicar_efeito(self, player):
         ### Cada subclasse define o que acontece quando é coletado.
-        ### Por padrão não faz nada — é tipo um 'contrato' que as filhas cumprem
+        ### Cada subclasse (coletável) deve implementar este método.
         raise NotImplementedError("Subclasses devem implementar aplicar_efeito")
 
     def update(self, player):
@@ -18,7 +18,7 @@ class Collectible(pygame.sprite.Sprite):
         if self.rect.colliderect(player.rect):
             self.collected = True
             self.aplicar_efeito(player)
-            self.kill()  # remove o sprite de todos os grupos (some da tela)
+            self.kill()  # remove o sprite da tela após ser coletado
 
 class Carne(Collectible):
     def __init__(self, x, y, image, groups):
