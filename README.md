@@ -156,19 +156,19 @@ Após definir a temática e as funcionalidades principais do jogo, a equipe busc
 
 **Início da fase**
 
-![Início da fase](src/images/prints do jogo/screenshot1.png)
+![Início da fase](src/images/prints%20do%20jogo/screenshot1.png)
 
 **Boost de cerveja ativo**
 
-![Boost de cerveja ativo](src/images/prints do jogo/screenshot2.png)
+![Boost de cerveja ativo](src/images/prints%20do%20jogo/screenshot2.png)
 
 **Tela de vitória**
 
-![Tela de vitória](src/images/prints do jogo/screenshot3.png)
+![Tela de vitória](src/images/prints%20do%20jogo/screenshot3.png)
 
 **Game Over**
 
-![Game Over](src/images/prints do jogo/screenshot4.png)
+![Game Over](src/images/prints%20do%20jogo/screenshot4.png)
 
 ---
 
