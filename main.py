@@ -48,6 +48,10 @@ def carregar_imagens():
     # icones do HUD (carvao colorido = pego, carvao cinza = faltando)
     IMAGENS["hud_carvao"]       = pygame.transform.smoothscale(load("coletavelcarvaocores.png"),  (26, 26))
     IMAGENS["hud_carvao_cinza"] = pygame.transform.smoothscale(load("coletavelcarvaocinza.png"),  (26, 26))
+    IMAGENS["hud_carne"]        = pygame.transform.smoothscale(load("coletavelbifecores.png"),    (26, 26))
+    IMAGENS["hud_carne_cinza"]  = pygame.transform.smoothscale(load("coletavelbifecinza.png"),    (26, 26))
+    IMAGENS["hud_breja"]        = pygame.transform.smoothscale(load("coletavelcervejacores.png"), (26, 26))
+    IMAGENS["hud_breja_cinza"]  = pygame.transform.smoothscale(load("coletavelcervejacinza.png"), (26, 26))
 
     # cenario de fundo, esticado para cobrir o nivel inteiro
     IMAGENS["fundo"] = pygame.transform.smoothscale(load("planodefundo.png"), (MAP_LARGURA, SCREEN_H))
@@ -120,18 +124,34 @@ def novo_jogo():
 # ------------------------------- LOGICA -------------------------------------
 
 def resolver_colisao_vertical(player, solidos):
-    player.no_chao = False
+    # resolve a sobreposicao vertical: pousar em cima ou bater a cabeca
     caixa = pygame.Rect(int(player.x), int(player.y), player.width, player.height)
     for s in solidos:
         if caixa.colliderect(s):
             if player.velocidade_y > 0:
                 player.y = s.top - player.height
                 player.velocidade_y = 0
-                player.no_chao = True
             elif player.velocidade_y < 0:
                 player.y = s.bottom
                 player.velocidade_y = 0
             caixa = pygame.Rect(int(player.x), int(player.y), player.width, player.height)
+
+    # Checa o chao com uma "sola" 3px abaixo dos pes, para um apoio ESTAVEL.
+    # Sem isto o player oscilava entre no-ar/no-chao a cada quadro, e o sprite
+    # piscava entre andar e pular (era isso que parecia tremor).
+    sola = pygame.Rect(int(player.x) + 4, int(player.y) + player.height, player.width - 8, 3)
+    apoio = None
+    for s in solidos:
+        if sola.colliderect(s):
+            apoio = s
+            break
+    if apoio is not None:
+        player.no_chao = True
+        if player.velocidade_y >= 0:
+            player.y = apoio.top - player.height   # cola no chao, elimina o tremor
+            player.velocidade_y = 0
+    else:
+        player.no_chao = False
 
 
 def atualizar_playing(jogo):
@@ -233,24 +253,32 @@ def desenhar_inimigos(tela, cam_x, inimigos):
 
 
 def desenhar_hud(tela, fonte, player):
-    """Painel com vidas, carne, breja e o carvao em icones (colorido=pego, cinza=falta)."""
-    painel = pygame.Surface((180, 140), pygame.SRCALPHA)
-    painel.fill((255, 255, 255, 110))
-    tela.blit(painel, (4, 4))
+    """HUD em icones, sem painel de fundo.
+    Carne = vida do player (colorida = tem, cinza = perdeu).
+    Carvao = progresso rumo a vitoria.
+    Breja = 1 icone: colorida quando o boost esta ativo, cinza quando nao."""
+    preto = (0, 0, 0)
 
-    tela.blit(fonte.render("Vidas: {}".format(player.vida), True, (0, 0, 0)), (10, 8))
-    tela.blit(fonte.render("Carne: {}".format(player.carne), True, (0, 0, 0)), (10, 32))
-    tela.blit(fonte.render("Breja: {}".format(player.cerveja), True, (0, 0, 0)), (10, 56))
+    # CARNE = vida (3 no total)
+    tela.blit(fonte.render("Carne:", True, preto), (10, 10))
+    x = 92
+    for i in range(3):
+        icone = IMAGENS["hud_carne"] if i < player.vida else IMAGENS["hud_carne_cinza"]
+        tela.blit(icone, (x, 8))
+        x += 30
 
-    tela.blit(fonte.render("Carvao:", True, (0, 0, 0)), (10, 84))
+    # CARVAO = progresso (nao mexemos, continua igual)
+    tela.blit(fonte.render("Carvao:", True, preto), (10, 42))
     x = 92
     for i in range(CARVOES_PARA_VENCER):
         icone = IMAGENS["hud_carvao"] if i < player.carvao else IMAGENS["hud_carvao_cinza"]
-        tela.blit(icone, (x, 82))
+        tela.blit(icone, (x, 40))
         x += 30
 
-    if player.boost_ativo():
-        tela.blit(fonte.render("BOOST!", True, (200, 120, 0)), (10, 114))
+    # BREJA = 1 icone: colorida com boost ativo, cinza sem boost
+    tela.blit(fonte.render("Breja:", True, preto), (10, 74))
+    icone = IMAGENS["hud_breja"] if player.boost_ativo() else IMAGENS["hud_breja_cinza"]
+    tela.blit(icone, (92, 72))
 
 
 def desenhar_jogo(tela, fonte, jogo):
